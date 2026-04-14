@@ -93,13 +93,43 @@ export function exportToPDF(
   doc.setFillColor(...COLORS.primary)
   doc.rect(0, 0, pageW, 38, 'F')
 
-  // Icono circular
-  doc.setFillColor(255, 255, 255, 0.15)
-  doc.circle(margin + 8, 19, 8, 'F')
-  doc.setTextColor(...COLORS.white)
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(10)
-  doc.text('G', margin + 5.5, 22)
+  // ── Icono gota dibujado con SVG path via jsPDF ──
+  const cx = margin + 8
+  const cy = 19
+  // Escalamos la gota del SVG (viewBox 64x64, gota de 18 a 53) al tamaño ~14mm
+  // Centro original (32,32), la escalamos a 14mm de alto
+  const scale = 14 / (53 - 10) // 14mm / alto original
+  const ox = cx - 32 * scale   // offset X para centrar
+  const oy = cy - (10 + 53) / 2 * scale // offset Y para centrar
+
+  // Path de la gota: M32 10 C32 10 18 28 18 38 C18 46.8 24.3 53 32 53 C39.7 53 46 46.8 46 38 C46 28 32 10 32 10Z
+  // Convertimos cada punto: px = ox + x*scale, py = oy + y*scale
+  const p = (x: number, y: number) => [ox + x * scale, oy + y * scale] as [number, number]
+
+  doc.setFillColor(255, 255, 255)
+  // Dibujamos la gota con lines (bezier curves)
+  const [startX, startY] = p(32, 10)
+  doc.lines(
+    [
+      // C32 10 18 28 18 38 → bezier: cp1(32,10) cp2(18,28) end(18,38)
+      [p(32,10)[0]-startX, p(32,10)[1]-startY, p(18,28)[0]-startX, p(18,28)[1]-startY, p(18,38)[0]-startX, p(18,38)[1]-startY],
+      // C18 46.8 24.3 53 32 53
+      [p(18,46.8)[0]-p(18,38)[0], p(18,46.8)[1]-p(18,38)[1], p(24.3,53)[0]-p(18,38)[0], p(24.3,53)[1]-p(18,38)[1], p(32,53)[0]-p(18,38)[0], p(32,53)[1]-p(18,38)[1]],
+      // C39.7 53 46 46.8 46 38
+      [p(39.7,53)[0]-p(32,53)[0], p(39.7,53)[1]-p(32,53)[1], p(46,46.8)[0]-p(32,53)[0], p(46,46.8)[1]-p(32,53)[1], p(46,38)[0]-p(32,53)[0], p(46,38)[1]-p(32,53)[1]],
+      // C46 28 32 10 32 10
+      [p(46,28)[0]-p(46,38)[0], p(46,28)[1]-p(46,38)[1], p(32,10)[0]-p(46,38)[0], p(32,10)[1]-p(46,38)[1], p(32,10)[0]-p(46,38)[0], p(32,10)[1]-p(46,38)[1]],
+    ],
+    startX, startY, [1, 1], 'F', true
+  )
+
+  // Cruz médica verde dentro de la gota
+  // Original: rect(28.5,29,7,2.5) y rect(30.75,26.75,2.5,7)
+  const [rx1, ry1] = p(28.5, 29)
+  doc.setFillColor(...COLORS.primary)
+  doc.rect(rx1, ry1, 7 * scale, 2.5 * scale, 'F')
+  const [rx2, ry2] = p(30.75, 26.75)
+  doc.rect(rx2, ry2, 2.5 * scale, 7 * scale, 'F')
 
   // Título
   doc.setFont('helvetica', 'bold')
