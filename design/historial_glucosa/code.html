@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Historial - Glucose Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#07521d",
+                        "primary-fixed-dim": "#88d982",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-dim": "#d9dadb",
+                        "secondary": "#286b33",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "primary": "#0d631b",
+                        "secondary-fixed": "#abf4ac",
+                        "inverse-primary": "#88d982",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#cbffc2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#002107",
+                        "on-secondary-container": "#2e7238",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#005312",
+                        "primary-container": "#2e7d32",
+                        "on-surface": "#191c1d",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#abf4ac",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed": "#291800",
+                        "background": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-fixed": "#a3f69c",
+                        "tertiary-container": "#976300",
+                        "surface": "#f8f9fa",
+                        "surface-tint": "#1b6d24",
+                        "surface-container": "#edeeef",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#bfcaba",
+                        "outline": "#707a6c",
+                        "secondary-fixed-dim": "#90d792",
+                        "on-tertiary-container": "#ffefdf",
+                        "tertiary": "#774d00",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-surface-variant": "#40493d",
+                        "on-primary-fixed": "#002204",
+                        "tertiary-fixed-dim": "#ffb954",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#633f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface bg-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full pt-6 pb-4 bg-[#f8f9fa] dark:bg-gray-950">
+<div class="flex items-center justify-between px-6 w-full max-w-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="hover:bg-gray-200/50 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#2E7D32]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-manrope font-bold tracking-tight text-2xl text-[#191c1d]">Historial</h1>
+<p class="text-sm text-on-surface-variant font-medium">34 mediciones en total</p>
+</div>
+</div>
+<button class="hover:bg-gray-200/50 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined text-[#2E7D32]">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-6 space-y-8">
+<!-- Search Section -->
+<section class="mt-4">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border-none rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50" placeholder="Buscar valor, contexto o nota..." type="text"/>
+</div>
+</section>
+<!-- Filter Pills -->
+<section class="overflow-x-auto no-scrollbar -mx-6 px-6">
+<div class="flex gap-3 whitespace-nowrap">
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-semibold text-sm transition-all shadow-sm">Todos</button>
+<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm border border-outline-variant/20 hover:bg-surface-container transition-all">Normal</button>
+<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm border border-outline-variant/20 hover:bg-surface-container transition-all">Alto</button>
+<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm border border-outline-variant/20 hover:bg-surface-container transition-all">Muy alto</button>
+<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm border border-outline-variant/20 hover:bg-surface-container transition-all">Pre-alto</button>
+<button class="px-6 py-2.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm border border-outline-variant/20 hover:bg-surface-container transition-all">Bajo</button>
+</div>
+</section>
+<!-- Grouped Readings List -->
+<div class="space-y-10">
+<!-- Group 1 -->
+<section class="space-y-4">
+<header class="flex items-center justify-between">
+<h2 class="font-manrope font-extrabold text-[11px] tracking-[0.15em] text-on-surface-variant uppercase">DOMINGO, 13 ABR</h2>
+<div class="flex items-center flex-1 mx-4 h-px bg-surface-container-high"></div>
+<span class="font-manrope font-bold text-sm text-primary">3</span>
+</header>
+<div class="grid gap-4">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:shadow-md border border-white/50">
+<div class="flex items-center gap-5">
+<div class="text-center">
+<span class="block font-manrope font-extrabold text-2xl text-on-surface">142</span>
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">mg/dL</span>
+</div>
+<div class="w-px h-10 bg-surface-container"></div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-tertiary-fixed text-on-tertiary-fixed-variant">Pre-alto</span>
+<span class="text-xs font-medium text-on-surface-variant">2:30 PM</span>
+</div>
+<p class="text-sm font-semibold text-on-surface/80">Después de comer</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:shadow-md border border-white/50">
+<div class="flex items-center gap-5">
+<div class="text-center">
+<span class="block font-manrope font-extrabold text-2xl text-on-surface">115</span>
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">mg/dL</span>
+</div>
+<div class="w-px h-10 bg-surface-container"></div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-container">Normal</span>
+<span class="text-xs font-medium text-on-surface-variant">7:00 AM</span>
+</div>
+<p class="text-sm font-semibold text-on-surface/80">Ayunas</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:shadow-md border border-white/50">
+<div class="flex items-center gap-5">
+<div class="text-center">
+<span class="block font-manrope font-extrabold text-2xl text-on-surface">95</span>
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">mg/dL</span>
+</div>
+<div class="w-px h-10 bg-surface-container"></div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-container">Normal</span>
+<span class="text-xs font-medium text-on-surface-variant">10:15 PM</span>
+</div>
+<p class="text-sm font-semibold text-on-surface/80">Antes de dormir</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Group 2 -->
+<section class="space-y-4">
+<header class="flex items-center justify-between">
+<h2 class="font-manrope font-extrabold text-[11px] tracking-[0.15em] text-on-surface-variant uppercase">SÁBADO, 12 ABR</h2>
+<div class="flex items-center flex-1 mx-4 h-px bg-surface-container-high"></div>
+<span class="font-manrope font-bold text-sm text-primary">2</span>
+</header>
+<div class="grid gap-4">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:shadow-md border border-white/50">
+<div class="flex items-center gap-5">
+<div class="text-center">
+<span class="block font-manrope font-extrabold text-2xl text-on-surface">185</span>
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">mg/dL</span>
+</div>
+<div class="w-px h-10 bg-surface-container"></div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-error-container text-on-error-container">Muy alto</span>
+<span class="text-xs font-medium text-on-surface-variant">9:30 PM</span>
+</div>
+<p class="text-sm font-semibold text-on-surface/80">Post-cena</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between transition-all hover:shadow-md border border-white/50">
+<div class="flex items-center gap-5">
+<div class="text-center">
+<span class="block font-manrope font-extrabold text-2xl text-on-surface">88</span>
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">mg/dL</span>
+</div>
+<div class="w-px h-10 bg-surface-container"></div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-container">Normal</span>
+<span class="text-xs font-medium text-on-surface-variant">7:15 AM</span>
+</div>
+<p class="text-sm font-semibold text-on-surface/80">Ayunas</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant/40 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#f8f9fa]/70 dark:bg-gray-950/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.05)] rounded-t-[24px]">
+<a class="flex flex-col items-center justify-center text-[#444746] dark:text-gray-400 px-5 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#abf4ac] dark:bg-green-900/40 text-[#0d631b] dark:text-green-200 rounded-full px-5 py-1.5 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-inter text-[11px] font-medium uppercase tracking-wider font-bold">Historial</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#444746] dark:text-gray-400 px-5 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">leaderboard</span>
+<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Estadísticas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#444746] dark:text-gray-400 px-5 py-1.5 hover:opacity-80 transition-opacity active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-inter text-[11px] font-medium uppercase tracking-wider">Perfil</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'>
+  <rect width='512' height='512' rx='112.64' fill='#60A5FA'/>
+  <circle cx='256' cy='266.24' r='143.36' fill='white' opacity='0.95'/>
+  <polygon points='256,92.16 184.32,194.56 327.68,194.56' fill='white' opacity='0.95'/>
+  <text x='256' y='302.08' font-family='Arial' font-size='92.16' font-weight='bold' fill='#3b82f6' text-anchor='middle' dominant-baseline='middle'>mg/dL</text>
+</svg>

@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ── Lush Vitality — Chlorophyll Scale (Material You tokens) ── */
+@theme {
+  /* Primary — Forest Green */
+  --color-primary: #0d631b;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #2e7d32;
+  --color-on-primary-container: #cbffc2;
+  --color-primary-fixed: #a3f69c;
+  --color-primary-fixed-dim: #88d982;
+  --color-on-primary-fixed: #002204;
+  --color-on-primary-fixed-variant: #005312;
+  --color-inverse-primary: #88d982;
+
+  /* Secondary — Soft Green */
+  --color-secondary: #286b33;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #abf4ac;
+  --color-on-secondary-container: #2e7238;
+  --color-secondary-fixed: #abf4ac;
+  --color-secondary-fixed-dim: #90d792;
+  --color-on-secondary-fixed: #002107;
+  --color-on-secondary-fixed-variant: #07521d;
+
+  /* Tertiary — Amber/Warm */
+  --color-tertiary: #774d00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #976300;
+  --color-on-tertiary-container: #ffefdf;
+  --color-tertiary-fixed: #ffddb4;
+  --color-tertiary-fixed-dim: #ffb954;
+  --color-on-tertiary-fixed: #291800;
+  --color-on-tertiary-fixed-variant: #633f00;
+
+  /* Error */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Surface hierarchy */
+  --color-surface: #f8f9fa;
+  --color-surface-dim: #d9dadb;
+  --color-surface-bright: #f8f9fa;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-variant: #e1e3e4;
+  --color-surface-tint: #1b6d24;
+  --color-inverse-surface: #2e3132;
+  --color-inverse-on-surface: #f0f1f2;
+
+  /* On-surface */
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #40493d;
+  --color-on-background: #191c1d;
+  --color-background: #f8f9fa;
+
+  /* Outline */
+  --color-outline: #707a6c;
+  --color-outline-variant: #bfcaba;
+}
+
+/* ── Google Fonts (loaded in index.html via link tag) ── */
+body {
+  font-family: 'Inter', -apple-system, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+.font-headline,
+h1,
+h2,
+h3 {
+  font-family: 'Manrope', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 3;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  position: relative;
+  box-shadow: 0 0 60px rgba(13, 99, 27, 0.06);
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar invisible */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+* {
+  scrollbar-width: none;
+}

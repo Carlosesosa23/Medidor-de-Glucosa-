@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "tertiary-fixed": "#ffddb4",
+                    "secondary-fixed": "#abf4ac",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffefdf",
+                    "surface-bright": "#f8f9fa",
+                    "secondary": "#286b33",
+                    "outline-variant": "#bfcaba",
+                    "primary-fixed": "#a3f69c",
+                    "surface-dim": "#d9dadb",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#002204",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-high": "#e7e8e9",
+                    "tertiary-container": "#976300",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#2e7d32",
+                    "surface-tint": "#1b6d24",
+                    "on-primary-container": "#cbffc2",
+                    "on-surface-variant": "#40493d",
+                    "on-primary-fixed-variant": "#005312",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#633f00",
+                    "on-secondary-fixed": "#002107",
+                    "inverse-primary": "#88d982",
+                    "primary": "#0d631b",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed-dim": "#ffb954",
+                    "on-secondary-fixed-variant": "#07521d",
+                    "on-secondary-container": "#2e7238",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#291800",
+                    "background": "#f8f9fa",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#774d00",
+                    "primary-fixed-dim": "#88d982",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary-fixed-dim": "#90d792",
+                    "secondary-container": "#abf4ac",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface": "#191c1d",
+                    "outline": "#707a6c",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-no-borders {
+            border: none !important;
+        }
+        .tonal-depth-stacking {
+            border: none !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body max-w-[390px] mx-auto min-h-screen relative overflow-x-hidden pb-32">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-6 py-4 w-full bg-[#f8f9fa] dark:bg-stone-950 sticky top-0 z-50 tonal-shift-no-borders">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-lowest hover:bg-stone-200/50 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-green-800" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-green-800">Add Measurement</h1>
+<p class="text-xs text-stone-500 font-medium">Registra tu nivel de glucosa</p>
+</div>
+</div>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="px-6 pt-6 space-y-8">
+<!-- Value Input Card -->
+<section class="relative group">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-[0_-4px_40px_rgba(25,28,29,0.05)] border-none">
+<div class="flex flex-col items-center gap-1">
+<input class="w-full bg-transparent border-none text-center text-7xl font-headline font-extrabold text-on-surface focus:ring-0 p-0 placeholder:text-surface-variant" placeholder="120" type="number"/>
+<span class="font-label text-label-sm uppercase tracking-widest text-outline">mg/dL</span>
+</div>
+<div class="mt-6 px-4 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-xs font-semibold uppercase tracking-wider">Pre-alto</span>
+</div>
+</div>
+<!-- Editorial Decor -->
+<div class="absolute -z-10 -top-4 -right-4 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Meal Context Selector -->
+<section class="space-y-4">
+<h2 class="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-outline ml-1">¿Cuándo mediste?</h2>
+<div class="grid grid-cols-3 gap-3">
+<!-- Option -->
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low hover:bg-stone-200/50 transition-colors active:scale-95">
+<span class="text-2xl mb-1">🌅</span>
+<span class="text-[13px] font-medium text-on-surface-variant">Ayunas</span>
+</button>
+<!-- Option Selected -->
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-secondary-container text-on-secondary-container ring-2 ring-primary-container transition-all active:scale-95">
+<span class="text-2xl mb-1">✅</span>
+<span class="text-[13px] font-bold">Después</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low hover:bg-stone-200/50 transition-colors active:scale-95">
+<span class="text-2xl mb-1">🍽️</span>
+<span class="text-[13px] font-medium text-on-surface-variant">Antes</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low hover:bg-stone-200/50 transition-colors active:scale-95">
+<span class="text-2xl mb-1">🌙</span>
+<span class="text-[13px] font-medium text-on-surface-variant">Dormir</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low hover:bg-stone-200/50 transition-colors active:scale-95">
+<span class="text-2xl mb-1">🏃</span>
+<span class="text-[13px] font-medium text-on-surface-variant">Ejercicio</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-surface-container-low hover:bg-stone-200/50 transition-colors active:scale-95">
+<span class="text-2xl mb-1">💉</span>
+<span class="text-[13px] font-medium text-on-surface-variant">Insulina</span>
+</button>
+</div>
+</section>
+<!-- Notes Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end ml-1">
+<h2 class="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-outline">Notas · opcional</h2>
+</div>
+<textarea class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/20 transition-all resize-none" placeholder="¿Algo especial que quieras anotar?" rows="3"></textarea>
+</section>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-lg rounded-full shadow-lg shadow-primary/20 active:scale-[0.98] transition-transform flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                Guardar medición
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-white/70 backdrop-blur-xl rounded-t-[2rem] shadow-[0_-4px_40px_rgba(25,28,29,0.05)] tonal-depth-stacking">
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-green-600 px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="book_2">book_2</span>
+<span class="font-['Inter'] font-medium text-[11px] uppercase tracking-wider">Journal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-green-600 px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="show_chart">show_chart</span>
+<span class="font-['Inter'] font-medium text-[11px] uppercase tracking-wider">Trends</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-green-100 text-green-900 rounded-full px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-['Inter'] font-medium text-[11px] uppercase tracking-wider">Add</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 hover:text-green-600 px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="lightbulb">lightbulb</span>
+<span class="font-['Inter'] font-medium text-[11px] uppercase tracking-wider">Insights</span>
+</a>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-20 pointer-events-none overflow-hidden">
+<div class="absolute top-[10%] -left-20 w-64 h-64 bg-secondary-fixed/10 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-[20%] -right-20 w-80 h-80 bg-primary-fixed/10 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

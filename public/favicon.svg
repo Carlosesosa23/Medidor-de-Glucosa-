@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Fondo redondeado azul -->
+  <rect width="64" height="64" rx="14" fill="#60A5FA"/>
+  <!-- Gota de sangre -->
+  <path d="M32 10 C32 10 18 28 18 38 C18 46.8 24.3 53 32 53 C39.7 53 46 46.8 46 38 C46 28 32 10 32 10Z" fill="white" opacity="0.95"/>
+  <!-- Cruz médica dentro de la gota -->
+  <rect x="28.5" y="29" width="7" height="2.5" rx="1.25" fill="#3B82F6"/>
+  <rect x="30.75" y="26.75" width="2.5" height="7" rx="1.25" fill="#3B82F6"/>
+</svg>

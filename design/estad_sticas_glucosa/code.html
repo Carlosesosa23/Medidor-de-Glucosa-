@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#291800",
+                        "tertiary-container": "#976300",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed-dim": "#88d982",
+                        "background": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "secondary-container": "#abf4ac",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-secondary-fixed-variant": "#07521d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#a3f69c",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-tertiary-container": "#ffefdf",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed": "#abf4ac",
+                        "surface-tint": "#1b6d24",
+                        "on-surface-variant": "#40493d",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed": "#002204",
+                        "inverse-surface": "#2e3132",
+                        "on-surface": "#191c1d",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#bfcaba",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-secondary-container": "#2e7238",
+                        "on-secondary-fixed": "#002107",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-container": "#2e7d32",
+                        "on-error-container": "#93000a",
+                        "outline": "#707a6c",
+                        "secondary-fixed-dim": "#90d792",
+                        "on-background": "#191c1d",
+                        "primary": "#0d631b",
+                        "surface-container": "#edeeef",
+                        "secondary": "#286b33",
+                        "on-primary-container": "#cbffc2",
+                        "inverse-primary": "#88d982",
+                        "tertiary": "#774d00",
+                        "tertiary-fixed-dim": "#ffb954",
+                        "surface": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Anchor (from Shared Components JSON) -->
+<nav class="w-full top-0 sticky bg-[#f8f9fa] dark:bg-neutral-900 z-50">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#2e7d32] dark:text-green-400 cursor-pointer active:scale-95 duration-150">menu</span>
+</div>
+<h1 class="font-['Manrope'] font-bold text-xl tracking-tight text-[#2e7d32] dark:text-green-400">Estadísticas</h1>
+<div class="w-6"></div> <!-- Placeholder for balance -->
+</div>
+</nav>
+<main class="px-6 max-w-lg mx-auto">
+<!-- Header Section -->
+<header class="mt-8 mb-6">
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Estadísticas</h2>
+<p class="text-on-surface-variant/70 font-medium text-sm mt-1">Últimos 7 días · 21 mediciones</p>
+</header>
+<!-- Period Selector -->
+<div class="bg-surface-container-low p-1.5 rounded-full flex gap-1 mb-8 shadow-sm">
+<button class="flex-1 py-2 text-sm font-bold rounded-full bg-surface-container-lowest text-primary shadow-[0_2px_8px_rgba(0,0,0,0.05)] transition-all">7d</button>
+<button class="flex-1 py-2 text-sm font-semibold rounded-full text-on-surface-variant/60 hover:text-on-surface-variant transition-all">14d</button>
+<button class="flex-1 py-2 text-sm font-semibold rounded-full text-on-surface-variant/60 hover:text-on-surface-variant transition-all">30d</button>
+</div>
+<!-- Time In Range Card -->
+<section class="bg-surface-container-lowest rounded-xl p-6 mb-6 shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">timer</span>
+</div>
+<span class="font-bold text-on-surface">Tiempo en rango</span>
+</div>
+<span class="text-4xl font-extrabold tracking-tighter text-primary">78%</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden mb-4">
+<div class="h-full bg-gradient-to-r from-primary to-secondary-container rounded-full" style="width: 78%"></div>
+</div>
+<div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider text-on-surface-variant/60">
+<span>Meta: 70-140 mg/dL</span>
+<span class="bg-surface-container-low px-2 py-1 rounded-md text-primary">16 de 21</span>
+</div>
+</section>
+<!-- Metrics Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<!-- Card 1: Promedio -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<div class="inline-flex p-2 rounded-lg bg-primary-fixed-dim/20 mb-3">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 mb-1">Promedio</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-extrabold text-on-surface">118</span>
+<span class="text-xs font-semibold text-on-surface-variant">mg/dL</span>
+</div>
+</div>
+<!-- Card 2: En rango -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<div class="inline-flex p-2 rounded-lg bg-secondary-container/30 mb-3">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 mb-1">En rango</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-extrabold text-on-surface">78</span>
+<span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+</div>
+<!-- Card 3: Episodios altos -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<div class="inline-flex p-2 rounded-lg bg-error-container/30 mb-3">
+<span class="material-symbols-outlined text-error text-xl" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 mb-1">Episodios altos</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-extrabold text-on-surface">3</span>
+<span class="text-xs font-semibold text-on-surface-variant">veces</span>
+</div>
+</div>
+<!-- Card 4: Episodios bajos -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<div class="inline-flex p-2 rounded-lg bg-tertiary-fixed/30 mb-3">
+<span class="material-symbols-outlined text-tertiary text-xl" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 mb-1">Episodios bajos</p>
+<div class="flex items-baseline gap-1">
+<span class="text-xl font-extrabold text-on-surface">2</span>
+<span class="text-xs font-semibold text-on-surface-variant">veces</span>
+</div>
+</div>
+</div>
+<!-- Trend Chart Card -->
+<section class="bg-surface-container-lowest rounded-xl p-6 mb-6 shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<h3 class="font-bold text-on-surface mb-6">Tendencia del período</h3>
+<div class="relative h-48 w-full">
+<!-- Chart Area Visual Mockup -->
+<div class="absolute inset-0 bg-secondary-container/10 rounded-lg border-y border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="absolute top-1/4 left-0 right-0 h-px bg-outline-variant/10"></span>
+<span class="absolute top-3/4 left-0 right-0 h-px bg-outline-variant/10"></span>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 200">
+<path d="M0,150 Q40,160 80,120 T160,110 T240,140 T320,100 T400,120" fill="none" stroke="#0d631b" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,150 Q40,160 80,120 T160,110 T240,140 T320,100 T400,120 L400,200 L0,200 Z" fill="url(#trendGradient)" opacity="0.2"></path>
+<defs>
+<lineargradient id="trendGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0d631b"></stop>
+<stop offset="100%" stop-color="#0d631b" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Target Zone Label -->
+<span class="absolute right-4 top-[45%] text-[10px] font-bold text-primary/40 uppercase tracking-widest">Zona Meta</span>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-1">
+<span class="text-[10px] font-bold text-on-surface-variant/40">LUN</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">MAR</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">MIÉ</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">JUE</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">VIE</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">SÁB</span>
+<span class="text-[10px] font-bold text-on-surface-variant/40">DOM</span>
+</div>
+</section>
+<!-- Bar Chart Card -->
+<section class="bg-surface-container-lowest rounded-xl p-6 mb-8 shadow-[0_4px_24px_rgba(25,28,29,0.04)]">
+<h3 class="font-bold text-on-surface mb-8">Promedio por día</h3>
+<div class="flex items-end justify-between h-32 gap-3 px-2">
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-full relative" style="height: 70%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-full" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-full relative" style="height: 85%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-full" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-full relative" style="height: 60%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-full" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-error rounded-t-full" style="height: 100%"></div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-full relative" style="height: 75%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-full" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-full relative" style="height: 65%">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-full" style="height: 100%"></div>
+</div>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-tertiary rounded-t-full" style="height: 45%"></div>
+</div>
+</div>
+<!-- Target Range Indicator Lines -->
+<div class="relative w-full h-px mt-[-100px] mb-[100px] bg-primary-container/20 pointer-events-none"></div>
+</section>
+<!-- Extreme Values Section -->
+<section class="mb-12">
+<h3 class="font-bold text-on-surface mb-4 px-1">Valores extremos</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-5 border-l-4 border-error shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-error/70 mb-2">Pico más alto</p>
+<div class="flex items-center gap-2">
+<span class="text-3xl font-extrabold text-on-surface">185</span>
+<span class="material-symbols-outlined text-error font-bold">arrow_upward</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-5 border-l-4 border-tertiary shadow-sm">
+<p class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70 mb-2">Pico más bajo</p>
+<div class="flex items-center gap-2">
+<span class="text-3xl font-extrabold text-on-surface">62</span>
+<span class="material-symbols-outlined text-tertiary font-bold">arrow_downward</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (from Shared Components JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#f8f9fa]/70 dark:bg-neutral-900/70 backdrop-blur-xl shadow-[0_-4px_40px_rgba(25,28,29,0.06)] rounded-t-[24px]">
+<!-- Inicio -->
+<button class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 px-5 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors active:scale-90 duration-200 ease-out">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Inicio</span>
+</button>
+<!-- Historial -->
+<button class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 px-5 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors active:scale-90 duration-200 ease-out">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Historial</span>
+</button>
+<!-- Estadísticas (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-[#abf4ac] dark:bg-[#2e7d32]/30 text-[#0d631b] dark:text-green-200 rounded-[24px] px-5 py-2 active:scale-90 duration-200 ease-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Estadísticas</span>
+</button>
+<!-- Perfil -->
+<button class="flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400 px-5 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors active:scale-90 duration-200 ease-out">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Perfil</span>
+</button>
+</nav>
+</body></html>
