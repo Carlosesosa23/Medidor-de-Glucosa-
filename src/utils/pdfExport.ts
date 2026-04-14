@@ -50,13 +50,15 @@ function getStatusColors(status: string): { fill: [number,number,number]; text: 
   }
 }
 
-// ── Strip emojis from strings (jsPDF standard fonts don't support them) ────
+// ── Strip emojis y caracteres no soportados por jsPDF ─────────────────────
 function stripEmoji(str: string): string {
-  // Remove common emoji ranges
   return str
-    .replace(/[\u{1F300}-\u{1F9FF}]/gu, '')
-    .replace(/[\u{2600}-\u{26FF}]/gu, '')
-    .replace(/[\u{2700}-\u{27BF}]/gu, '')
+    // Emojis y símbolos Unicode fuera del rango latin
+    .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+    .replace(/[\u{2000}-\u{27BF}]/gu, '')
+    .replace(/[\u{FE00}-\u{FEFF}]/gu, '')
+    // Cualquier carácter fuera del rango imprimible latin-1
+    .replace(/[^\x20-\x7E\xA0-\xFF]/g, '')
     .trim()
 }
 
@@ -236,16 +238,17 @@ export function exportToPDF(
         cellPadding: { top: 4, bottom: 4, left: 4, right: 4 },
         lineColor: COLORS.border,
         lineWidth: 0.2,
+        overflow: 'linebreak',
       },
       alternateRowStyles: {
         fillColor: [252, 253, 252],
       },
       columnStyles: {
-        0: { cellWidth: 18 },                    // Hora
-        1: { cellWidth: 28, fontStyle: 'bold' }, // Glucosa
-        2: { cellWidth: 22 },                    // Estado
-        3: { cellWidth: 40 },                    // Contexto
-        4: { cellWidth: 'auto' },                // Notas
+        0: { cellWidth: 16 },                    // Hora
+        1: { cellWidth: 26, fontStyle: 'bold' }, // Glucosa
+        2: { cellWidth: 20 },                    // Estado
+        3: { cellWidth: 45, overflow: 'linebreak' }, // Contexto
+        4: { cellWidth: 'auto', overflow: 'linebreak' }, // Notas
       },
       didParseCell: (data) => {
         // Colorear celda de estado
