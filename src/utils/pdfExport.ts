@@ -317,7 +317,34 @@ export function exportToPDF(
 
   // ── DESCARGAR ────────────────────────────────────────────────────────────
   const fileName = `glucosa_${format(fromDate, 'dd-MM-yyyy')}_al_${format(toDate, 'dd-MM-yyyy')}.pdf`
-  doc.save(fileName)
+
+  // En iOS/Safari y la mayoría de navegadores móviles, doc.save() no descarga
+  // sino que abre el PDF inline. Usamos un <a> con download como solución.
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
+  const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent)
+
+  if (isIOS) {
+    // iOS Safari: abrir en nueva pestaña (única opción viable, no permite downloads programáticos)
+    const blobUrl = doc.output('bloburl')
+    window.open(blobUrl as unknown as string, '_blank')
+  } else if (isMobile) {
+    // Android y otros móviles: usar <a download> para forzar descarga
+    const blob = doc.output('blob')
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = fileName
+    a.style.display = 'none'
+    document.body.appendChild(a)
+    a.click()
+    setTimeout(() => {
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    }, 300)
+  } else {
+    // Desktop: comportamiento normal
+    doc.save(fileName)
+  }
 
   return { success: true, message: `PDF exportado: ${fileName}` }
 }
