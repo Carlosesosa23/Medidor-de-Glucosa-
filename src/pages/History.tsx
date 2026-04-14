@@ -207,9 +207,9 @@ export function History() {
                         boxShadow: '0 2px 12px rgba(25,28,29,0.04)',
                       }}
                     >
-                      <div className="flex items-center gap-5">
+                      <div className="flex items-center gap-5 min-w-0 flex-1">
                         {/* Valor */}
-                        <div className="text-center">
+                        <div className="text-center shrink-0">
                           <span
                             className="block font-extrabold text-2xl text-[#191c1d]"
                             style={{ fontFamily: 'Manrope, sans-serif' }}
@@ -222,13 +222,13 @@ export function History() {
                         </div>
 
                         {/* Separador */}
-                        <div className="w-px h-10 bg-[#edeeef]" />
+                        <div className="w-px h-10 bg-[#edeeef] shrink-0" />
 
                         {/* Info */}
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
+                        <div className="space-y-1 min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span
-                              className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+                              className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider shrink-0"
                               style={{
                                 background: STATUS_BADGE_BG[s],
                                 color: STATUS_BADGE_TEXT[s],
